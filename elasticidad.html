@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculadora - Elasticidad</title>
+  <link rel="stylesheet" href="elasticidad.css" />
+</head>
+<body class="claro">
+
+  <!-- Modal de alerta volver -->
+  <div id="alertaVolver" class="modal oculto">
+    <div class="modal-contenido">
+      <h2>¿Deseas volver al menú?</h2>
+      <p>Perderás los datos ingresados. ¿Estás seguro?</p>
+      <div class="modal-botones">
+        <button onclick="confirmarVolver()">Sí</button>
+        <button onclick="cancelarVolver()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de ayuda -->
+  <div id="modalAyuda" class="modal oculto">
+    <div class="modal-contenido">
+      <h2>¿Cómo funciona esta calculadora?</h2>
+      <p>Esta herramienta te ayuda a calcular la <strong>constante del resorte</strong> (k) a partir del estiramiento producido por una masa.</p>
+      <p><strong>¿Qué puedes hacer?</strong></p>
+      <ul>
+        <li>Ingresar la <strong>masa inicial</strong> y el <strong>estiramiento</strong> para calcular la constante.</li>
+        <li>Agregar una <strong>masa adicional</strong> para ver el nuevo estiramiento total y el adicional.</li>
+      </ul>
+      <p>También verás una <strong>gráfica</strong> con el comportamiento del estiramiento.</p>
+      <button onclick="cerrarModal()">Entendido</button>
+    </div>
+  </div>
+
+  <!-- Contenido principal -->
+  <main class="contenedor">
+    <form id="elasticidad-form">
+      <div class="form-header">
+        <button class="boton-volver" id="volverBtn" title="Volver al menú">
+          <svg viewBox="0 0 46 40"><path d="M0 20.038c0-.7.3-1.5.8-2.1l16-17c1.1-1 3.2-1.4 4.4-.3 1.2 1.1 1.2 3.3 0 4.4L9.9 16.938H43c1.7 0 3 1.3 3 3s-1.3 3-3 3H9.9l11.3 11.9c1 1 1.2 3.3 0 4.4-1.2 1.1-3.3.8-4.4-.3l-16-17c-.5-.5-.8-1.1-.8-1.9z"/></svg>
+        </button>
+
+        <h1>Calculadora de Elasticidad</h1>
+
+        <div class="acciones">
+          <button id="ayudaBtn" class="boton-ayuda" type="button">?</button>
+
+          <label class="switch">
+            <input type="checkbox" id="modoToggle" />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <label for="masa1">Masa inicial (kg):</label>
+      <input type="number" id="masa1" step="0.01" required />
+
+      <label for="masa2">Masa adicional (kg, opcional):</label>
+      <input type="number" id="masa2" step="0.01" />
+
+      <label for="estiramiento">Estiramiento con masa inicial (cm):</label>
+      <input type="number" id="estiramiento" step="0.01" required />
+
+      <button type="submit">Calcular</button>
+    </form>
+
+    <section id="resultado"></section>
+    <canvas id="graficoElasticidad" width="400" height="200"></canvas>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="elasticidad.js"></script>
+</body>
+</html>

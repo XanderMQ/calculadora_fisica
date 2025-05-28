@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Efecto Doppler</title>
+  <link rel="stylesheet" href="efecto_doppler.css" />
+</head>
+<body class="claro">
+
+  <!-- Alerta volver -->
+  <div id="alertaVolver" class="modal oculto">
+    <div class="modal-contenido">
+      <h2>¿Deseas volver al menú?</h2>
+      <p>Perderás los datos ingresados. ¿Estás seguro?</p>
+      <div class="modal-botones">
+        <button onclick="confirmarVolver()">Sí</button>
+        <button onclick="cancelarVolver()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+ <!-- Modal ayuda -->
+<div id="modalAyuda" class="modal oculto">
+  <div class="modal-contenido">
+    <h2>¿Cómo funciona esta calculadora?</h2>
+    <p>
+      Esta calculadora interactiva te permite conocer la <strong>frecuencia percibida</strong> por un oyente cuando hay movimiento entre una fuente sonora y el observador, aplicando el <strong>efecto Doppler</strong>.
+    </p>
+    <p>Selecciona uno de los siguientes escenarios para ver cómo se modifica la frecuencia:</p>
+    <ul>
+      <li>
+        <strong>Oyente en movimiento:</strong><br>
+        Si el oyente se mueve hacia o lejos de una fuente estacionaria.<br>
+        Fórmula: <strong>f′ = f · (v ± v₀) / v</strong><br>
+        <em>v₀</em> es la velocidad del oyente, <em>v</em> es la velocidad del sonido en el aire.
+      </li>
+      <li>
+        <strong>Fuente en movimiento:</strong><br>
+        Si la fuente sonora se mueve hacia o lejos de un oyente en reposo.<br>
+        Fórmula: <strong>f′ = f · v / (v ± vₛ)</strong><br>
+        <em>vₛ</em> es la velocidad de la fuente.
+      </li>
+      <li>
+        <strong>Ambos en movimiento:</strong><br>
+        Cuando tanto el oyente como la fuente se están moviendo.<br>
+        Fórmula: <strong>f′ = f · (v ± v₀) / (v ∓ vₛ)</strong>
+      </li>
+    </ul>
+    <p><strong>Signos ± / ∓:</strong> Elige "+" si el objeto se acerca, y "−" si se aleja. La calculadora te ayudará a aplicar el signo correcto automáticamente.</p>
+    <button onclick="cerrarModal()">Entendido</button>
+  </div>
+</div>
+
+
+  <main class="contenedor">
+    <form id="doppler-form">
+      <div class="form-header">
+        <button class="boton-volver" id="volverBtn" title="Volver al menú">
+          <svg viewBox="0 0 46 40">
+            <path d="M0 20.038c0-.7.3-1.5.8-2.1l16-17c1.1-1 3.2-1.4 4.4-.3 1.2 1.1 1.2 3.3 0 4.4L9.9 16.938H43c1.7 0 3 1.3 3 3s-1.3 3-3 3H9.9l11.3 11.9c1 1 1.2 3.3 0 4.4-1.2 1.1-3.3.8-4.4-.3l-16-17c-.5-.5-.8-1.1-.8-1.9z"/>
+          </svg>
+        </button>
+
+        <h1>Calculadora de Efecto Doppler</h1>
+
+        <div class="acciones">
+          <button id="ayudaBtn" class="boton-ayuda" type="button">?</button>
+          <label class="switch">
+            <input type="checkbox" id="modoToggle" />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <label for="escenario">Escenario:</label>
+      <select id="escenario" required>
+        <option value="">Selecciona un escenario</option>
+        <option value="oyente">Oyente en movimiento</option>
+        <option value="fuente">Fuente en movimiento</option>
+        <option value="ambos">Ambos en movimiento</option>
+      </select>
+
+      <div id="campos-dinamicos"></div>
+
+      <button type="submit">Calcular</button>
+    </form>
+
+    <section id="resultado"></section>
+    <canvas id="graficoDoppler" width="400" height="200"></canvas>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="efecto_doppler.js"></script>
+</body>
+</html>
+
+
