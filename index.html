@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de Física de Ondas</title>
+  <link rel="stylesheet" href="css/menu.css" />
+</head>
+<body class="claro">
+
+  <!-- Barra superior -->
+  <header class="top-bar">
+    <button id="ayudaBtn" title="¿Cómo funciona?" class="boton-ayuda">?</button>
+    <label class="switch">
+      <input type="checkbox" id="modoToggle" />
+      <span class="slider"></span>
+    </label>
+  </header>
+
+  <!-- Modal ayuda -->
+  <div id="modalAyuda" class="modal oculto">
+    <div class="modal-contenido">
+      <h2>¿Qué es esta plataforma?</h2>
+      <p>
+        Esta calculadora interactiva fue desarrollada para facilitar tu comprensión de la física de ondas.
+        Resuelve problemas paso a paso y visualiza conceptos clave como Elasticidad, Movimiento Armónico, Ondas y más.
+      </p>
+      <button onclick="cerrarModal()">Cerrar</button>
+    </div>
+  </div>
+
+  <main>
+    <h1>Bienvenido a la Calculadora de Física de Ondas</h1>
+    <p class="subtitulo">Explora y comprende los fenómenos ondulatorios de forma visual, interactiva y precisa.</p>
+    <p class="frase-extra">Convierte la teoría en práctica con herramientas diseñadas para estudiantes como tú.</p>
+
+    <br><br/>
+    <div class="temas-grid">
+      <a href="html/elasticidad.html" class="card">
+        <img src="img/elasticidad.png" alt="Elasticidad" class="card-img-bg">
+        <div class="card-overlay">Elasticidad</div>
+      </a>
+
+      <a href="html/modulo_young.html" class="card">
+        <img src="img/young.png" alt="Módulo de Young" class="card-img-bg">
+        <div class="card-overlay">Módulo de Young</div>
+      </a>
+
+
+      <a href="html/movimiento_armonico.html" class="card">
+        <img src="img/armonico.png" alt="Movimiento Armónico" class="card-img-bg">
+        <div class="card-overlay">Movimiento Armónico</div>
+      </a>
+
+      <a href="html/ondas_sonido.html" class="card">
+        <img src="img/ondas_sonido.png" alt="Ondas y Sonido" class="card-img-bg">
+        <div class="card-overlay">Ondas y Sonido</div>
+      </a>
+
+      <a href="html/efecto_doppler.html" class="card">
+        <img src="img/doppler.png" alt="Efecto Doppler" class="card-img-bg">
+        <div class="card-overlay">Efecto Doppler</div>
+      </a>
+    </div>
+  </main>
+<br><br/>
+
+  <footer class="footer">
+    <p>© 2025 Calculadora de Física de Ondas | Desarrollado por BRAYAN MONTEALEGRE | ITFIP.</p>
+    <p>Hecho para estudiantes.</p>
+  </footer>
+
+  <script src="js/menu.js"></script>
+</body>
+</html>

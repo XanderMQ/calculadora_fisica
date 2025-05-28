@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ondas y Sonido</title>
+  <link rel="stylesheet" href="../css/ondas_sonido.css" />
+</head>
+<body class="claro">
+
+ <!-- Alerta volver -->
+  <div id="alertaVolver" class="modal oculto">
+    <div class="modal-contenido">
+      <h2>¿Deseas volver al menú?</h2>
+      <p>Perderás los datos ingresados. ¿Estás seguro?</p>
+      <div class="modal-botones">
+        <button onclick="confirmarVolver()">Sí</button>
+        <button onclick="cancelarVolver()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal ayuda -->
+  <div id="modalAyuda" class="modal oculto">
+    <div class="modal-contenido">
+      <h2>¿Cómo funciona esta calculadora?</h2>
+      <p>Selecciona qué valor deseas calcular (velocidad, frecuencia o longitud de onda) y proporciona los otros dos. El sistema usará:</p>
+      <p><strong>v = f · λ</strong></p>
+      <ul>
+        <li>v: velocidad del sonido (m/s)</li>
+        <li>f: frecuencia (Hz)</li>
+        <li>λ: longitud de onda (m)</li>
+      </ul>
+      <button onclick="cerrarModal()">Entendido</button>
+    </div>
+  </div>
+
+  <main class="contenedor">
+    <form id="sonido-form">
+      <div class="form-header">
+        <button class="boton-volver" id="volverBtn" title="Volver al menú">
+          <svg viewBox="0 0 46 40"><path d="M0 20.038c0-.7.3-1.5.8-2.1l16-17c1.1-1 3.2-1.4 4.4-.3 1.2 1.1 1.2 3.3 0 4.4L9.9 16.938H43c1.7 0 3 1.3 3 3s-1.3 3-3 3H9.9l11.3 11.9c1 1 1.2 3.3 0 4.4-1.2 1.1-3.3.8-4.4-.3l-16-17c-.5-.5-.8-1.1-.8-1.9z"/></svg>
+        </button>
+
+        <h1>Calculadora de Ondas y Sonido</h1>
+
+        <div class="acciones">
+          <button id="ayudaBtn" class="boton-ayuda" type="button">?</button>
+          <label class="switch">
+            <input type="checkbox" id="modoToggle" />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <label for="calculo">¿Qué deseas calcular?</label>
+      <select id="calculo" required>
+        <option value="">Seleccione una opción</option>
+        <option value="velocidad">Velocidad (v)</option>
+        <option value="frecuencia">Frecuencia (f)</option>
+        <option value="longitud">Longitud de onda (λ)</option>
+      </select>
+
+      <div id="campos-dinamicos" class="grupo-campos"></div>
+
+      <button type="submit">Calcular</button>
+    </form>
+
+    <section id="resultado"></section>
+    <canvas id="graficoSonido" width="400" height="200"></canvas>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../js/ondas_sonido.js"></script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+/* ========== ESTILOS GENERALES ========== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  transition: background 0.3s, color 0.3s;
+}
+
+body.claro {
+  background-color: #f5f5f5;
+  color: #000;
+}
+
+body.oscuro {
+  background-color: #121212;
+  color: #fff;
+}
+
+.contenedor {
+  max-width: 500px;
+  margin: 80px auto;
+  padding: 20px;
+}
+
+/* ========== FORMULARIO ========== */
+form {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: relative;
+}
+body.oscuro form {
+  background: #1e1e1e;
+  color: white;
+}
+
+form input, form button {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+form button {
+  background: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+form button:hover {
+  background: #0056b3;
+}
+
+/* ========== ENCABEZADO DEL FORMULARIO ========== */
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.form-header h1 {
+  font-size: 1.2rem;
+  margin: 0;
+  flex-grow: 1;
+  text-align: center;
+}
+.acciones {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ========== BOTÓN FLECHA VOLVER ========== */
+.boton-volver {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.boton-volver svg {
+  width: 30px;
+  height: 30px;
+  fill: #333;
+  transition: fill 0.3s;
+}
+body.oscuro .boton-volver svg {
+  fill: #fff;
+}
+
+/* ========== BOTÓN AYUDA ========== */
+.boton-ayuda {
+  background-color: #333;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  border: none;
+  cursor: pointer;
+}
+body.oscuro .boton-ayuda {
+  background-color: #bbb;
+  color: black;
+}
+
+/* ========== SWITCH CLARO/OSCURO ========== */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 24px;
+  inset: 0;
+}
+.slider::before {
+  content: "";
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+input:checked + .slider {
+  background-color: #2196f3;
+}
+input:checked + .slider::before {
+  transform: translateX(26px);
+}
+
+/* ========== MODAL (AYUDA y ALERTA VOLVER) ========== */
+.modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.modal-contenido {
+  background: #fff;
+  color: #000;
+  padding: 20px;
+  max-width: 500px;
+  width: 90%;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  text-align: left;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+body.oscuro .modal-contenido {
+  background: #222;
+  color: white;
+}
+.modal-contenido h2 {
+  margin-top: 0;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+.modal-contenido p {
+  margin-top: 20px;
+  font-weight: 600;
+}
+.modal-contenido ul {
+  margin: 10px 0 20px 20px;
+  padding-left: 0;
+  list-style: none;
+}
+.modal-contenido ul li::before {
+  content: "✔️";
+  margin-right: 10px;
+  color: #007bff;
+}
+.modal-contenido button {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 25px;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.modal-contenido button:hover {
+  background-color: #0056b3;
+}
+.modal-botones {
+  display: flex;
+  justify-content: space-around;
+}
+.oculto {
+  display: none;
+}
+
+/* ========== RESULTADO ========== */
+#resultado {
+  margin-top: 20px;
+}
+.paso, .resultado-final {
+  background-color: #e0e0e0;
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+body.oscuro .paso, body.oscuro .resultado-final {
+  background-color: #2a2a2a;
+}
+.resultado-final {
+  border-left: 4px solid #28a745;
+}
+
+/* ========== GRÁFICO ========== */
+canvas {
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100%;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 480px) {
+  .form-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .form-header h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .acciones {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .boton-volver {
+    align-self: flex-start;
+  }
+
+  .boton-ayuda {
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+  }
+
+  .boton-volver svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .modal-contenido {
+    font-size: 0.95rem;
+    padding: 15px;
+  }
+}
